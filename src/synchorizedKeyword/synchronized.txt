@@ -1,0 +1,10 @@
+synchronized Anahtar kelimesi metodun başına getirildiğinde
+Metoda ulaşmak isteyen Threadler metoda sıra ile girerler
+ve bir thread metodu bitirmeden diğer thread giremez.
+Buna İngilizce terim olarak “intrinsic lock” yani yerleşik/içsel kilit mekanizması denmektedir.
+
+ Bir thread synchronized code içinde sleep() metodunu çağırırsa,
+ o kod bloğuna girerken aldığı lock’ı serbest bırakmaz.
+ Yani o kod bloğuna girmeyi bekleyen başka thread varsa, bekleyen thread lock serbest kalmadığından beklemeye devam edecektir.
+
+ Static methodlar synchronized olabilir.

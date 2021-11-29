@@ -1,0 +1,4 @@
+Java'da bir Thread'ı sonlandırmanın 2 yolu vardır:
+
+1 - Bayrağı kullanmak
+2 - interrupt()

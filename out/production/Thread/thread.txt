@@ -1,0 +1,43 @@
+Thread -> Aynı anda çalışabilecek iş parçacığıdır.
+
+iş ihtiyacına göre multi-thread yapmak gerekir.
+
+
+Bir operasyon bittikten sonra diğerine geçme zorunluluğu var ise single thread çalışılır.
+Ama bu operasyonlar birbirinden bağımsız ise multithread yapılabilir.
+Genellikle bir operasyon içerisindeki yapılar birbirini bekleyen yani biri bittikten sonra diğeri çalışan yapılardır.
+
+Sıralı olması gerekmeyen operasyonlarda multi-thread kullanılabilir.
+Bu noktada dikkat etmemiz gereken şey çok thread ile çalışacağımız zaman birinde oluşan
+data diğerini de ilgilendiriyorsa multi-thread mı yoksa single-thread mı yapılmalı konusunda dikkat edilmesi gerekir.
+
+Thread kullanımındaki methodlar
+
+start() -> Thread start edildikten sonra runnable state’e geçer.
+join() -> Bir thread işlemini bitirmeden diğer bir thread çalışması engellenir. Eşzamanlı birden fazla thread in iş yapması önlenmiş olur.
+isAlive() -> Oluşturulan thread sınıfının halen çalışıp çalışmadığını kontrol etmek için kullanılır.(boolean)
+getPriortiy() ->
+setPriortiy() ->
+sleep() ->Sleep metodu ile sleep metodunu çağıran thread verilen parametre süresince uykuya alınır.
+
+NEW -> Yaratılmış ama start edilmemiş thread durumudur.
+RUNNABLE -> Start edilmiş yani o an java virtual machine’de çalışan thread’in durumudur.
+BLOCKED -> Bu state’de thread monitor lock için bekletilmiş durumdadaır. Thread bloklanmıştır. Gerekli lock açıldığında yeniden runnable state’e geçebilir.
+WAITING -> Belirli bir iş parçasını yapabilmek için süresiz olarak başka threadlerin çalışmasını tamamlamasını bekleyen threadin durumu.
+TİMED_WAITING -> Kendi işini yapabilmesi için belirli bir süre içinde diğer threadlerin çalışmasının bitmesini bekleyen threadin durumu.
+TERMİNATED -> Çalışması durmuş ve çıkılmış olan threadin durumu.
+
+Running durumunda olan bir thread wait(), sleep(),  join() metodları çağırılarak blocked veya waiting durumuna geçebilir.
+Terminate edilmiş (öldürülmüş) thread yeniden start edilemez.
+
+wait() -> Bir thread icin wait() methodu çağrıldığı zaman, thread beklemeye zorlanır ta ki başka bir thread tarafında notify() yada notifyAll() methodları tetiklene kadar.
+notify() -> Bir thread için notify() methodu çağrıldığı zaman, beklemekte olan thread harekete geçer. Birden fazla Thread için bekleme söz konusu ise hangi Thread in uyanacağı belli değildir.
+Tamamen implemantasyona bağlı olarak içlerinden bir tanesi alır.
+
+Livelock Threads  ->  Threadler tarafından ortak kullanılan kaynaklar var ve Threadler bir yarış içerisinde bu kaynaklara erişmeye çalışıyorlar.
+Fakat herkes aynı anda kullanamayacağı için Threadler fedakarlık yapmaya başlıyor ve birbirlerine öncelik veriyor. Fakat her thread birbirine öncelik
+verirse bu durumda ortada kaynağı alacak hiç bir thread kalmıyor. Deadlock'ta olduğu gibi livelock'ta da threadler ilerleme kaydedemezler.
+
+Deadlock Threads  ->  Eğer threadler birbirlerinin ellerinde tuttukları lockları bekliyorlarsa, hiç bir zaman locklar serbest bırakılmayacak ve
+hiç bir thread ilerleyemeyecek böylelikle bir deadlock durumu meydana gelecek.
+Bu durumu ortadan kaldırmak için senkronizasyona ve kaynak paylaşımının zamanlamasına dikkat edilmelidir.

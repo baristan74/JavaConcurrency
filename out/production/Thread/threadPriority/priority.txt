@@ -1,0 +1,11 @@
+MultiThread uygulamalarda, yeni bir thread oluşturulduğunda, oluşturulan bu threada bir öncelik değeri verilir.
+Bu değer default olarak JVM(Java Virtual Machine) tarafından verilir. Aynı zamanda geliştiricide oluşturulacak olan bu thread için,
+geliştirme aşamasında 0 ile 10 arasında bir öncelik değeri atayabilir.
+
+Aynı zamanda Javada 3 adet static olarak priority değeri tanımlanmıştır. Bunlar
+public static int Thread.MIN_PRIORITY = 1  En düşük öncelik değeridir.
+public static int Thread.NORM_PRIORITY = 5  Orta değerdir. Aynı zamanda Default olarak ayarlı olan değerdir.
+public static int Thread.MAX_PRIORITY= 10  En yüksek öncelik değeridir.
+
+**Eğer aynı anda çalışan iki tane thread varsa ve bunların öncelik değerleri aynı ise bu threadların hangisinin ilk olarak çalıştırılacağını kesin olarak bilemeyiz.
+Bu threadların öncelik durumları thread scheduler tarafından belirlenir.
